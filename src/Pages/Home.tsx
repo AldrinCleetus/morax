@@ -15,8 +15,6 @@ const Home = () => {
                 <div className="month mx-auto mt-5 font-bold text-2xl">January</div>
                 <div className="grid grid-container m-5  gap-2 ">
                     
-                    
-
                     {
                         week.map(day =>{
                             return <div className="text-xl flex justify-center">{day}</div>
@@ -31,11 +29,6 @@ const Home = () => {
                                         (day,idx)=>{
                                             return <div className="relative rounded-md bg-stone-800 py-4 flex flex-col justify-center" key={idx}>
                                                 <p className=" m-0 absolute bottom-0 right-1">{day.format("DD")}</p>
-
-                                            
-
-
-
                                             </div>
                                         }
                                     )
