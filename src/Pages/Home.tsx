@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "../Components/Navbar";
 import { getMonth } from "../Util/Month";
+import Day from "../Components/Day";
+import Title from "../Components/Title";
 
 const Home = () => {
     
@@ -12,6 +14,7 @@ const Home = () => {
             <Navbar></Navbar>
             <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%]  m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col">
                 
+                <Title name="Placeholder"></Title>
                 <div className="month mx-auto mt-5 font-bold text-2xl">January</div>
                 <div className="grid grid-container m-5  gap-2 ">
                     
@@ -27,9 +30,9 @@ const Home = () => {
                                 {
                                     row.map(
                                         (day,idx)=>{
-                                            return <div className="relative rounded-md bg-stone-800 py-4 flex flex-col justify-center" key={idx}>
-                                                <p className=" m-0 absolute bottom-0 right-1">{day.format("DD")}</p>
-                                            </div>
+
+                                            return <Day day={day} id={idx} onClick={()=>{console.log(day.format('DD'))}}></Day>
+                                            
                                         }
                                     )
                                 }
