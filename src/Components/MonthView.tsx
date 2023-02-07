@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 import { getMonth } from "../Util/Month";
 import Title from "./Title";
 import Day from "./Day";
 
 
 type MonthViewProps = {
-    title: string
+    title: string,
+    AddEventModal: Dispatch<React.SetStateAction<boolean>>,
+    AddEvent: (day:Date)=> void
 }
 
 const MonthView = (props:MonthViewProps) => {
@@ -24,7 +26,7 @@ const MonthView = (props:MonthViewProps) => {
                     
                     {
                         week.map(day =>{
-                            return <div className="text-xl flex justify-center">{day}</div>
+                            return <div key={day} className="text-xl flex justify-center">{day}</div>
                         })
                     }
 
@@ -35,7 +37,7 @@ const MonthView = (props:MonthViewProps) => {
                                     row.map(
                                         (day,idx)=>{
 
-                                            return <Day day={day} id={idx} onClick={()=>{console.log(day.format('DD'))}}></Day>
+                                            return <Day key={index * 7 + idx} day={day} id={idx} onClick={()=>{props.AddEvent(day.toDate())}}></Day>
                                             
                                         }
                                     )
