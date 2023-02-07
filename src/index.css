@@ -29,7 +29,7 @@ body,
 
 .grid-container {
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 30px repeat(5, minmax(100px, 1fr));
+  grid-template-rows: 30px repeat(5, minmax(100px, max-content));
 }
 
 @media only screen and (max-width: 1910px) {

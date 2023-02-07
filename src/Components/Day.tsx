@@ -11,7 +11,10 @@ const Day = (props:DayProps) => {
                 props.events?.map(event => {
                     if(event.startDate?.toDateString() === props.day.toDate().toDateString()){
                         console.log(event.startDate, props.day.toDate())
-                        return <div>Hello</div>
+                        return <div className="relative rounded h-[100%]">
+                            <h3 className="absolute ">Hello</h3>
+                            <img className="h-[100%] object-cover" src="temp/test.png" alt="" />
+                        </div>
                     }
 
                     
