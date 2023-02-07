@@ -2,6 +2,7 @@ import { Input, SegmentedControl } from '@mantine/core';
 import { Dispatch, useState } from 'react';
 import { faHeading } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { DatePicker } from '@mantine/dates';
 
 type CalenderEditorProps = {
     CalendarTypeSetFunction: Dispatch<React.SetStateAction<string>>,
@@ -28,6 +29,9 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                 <SegmentedControl data={data} onChange={props.CalendarTypeSetFunction} radius={'md'}/>
                 <div className="my-2 font-bold text-md">Name</div>
                 <Input icon={<FontAwesomeIcon icon={faHeading} />} placeholder="Title" radius="md" onChange={e => props.TitleSetFunction(e.target.value)}/>
+                <div className="my-2 font-bold text-md">Date</div>
+                <DatePicker className='my-2' placeholder="Pick date" label="Event date" onChange={e => console.log(e)}/>
+                <DatePicker className='my-2' placeholder="Pick date" label="End date (Optional)" />
             </div>
         </div>
      );

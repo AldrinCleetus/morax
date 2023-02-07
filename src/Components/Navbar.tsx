@@ -14,7 +14,7 @@ const Navbar = () => {
                 <img src="icons/logo.svg" alt=""  className="mx-3 w-8"/>
                 <Link to='/'><h2 className="text-3xl font-bold italic">Kalender</h2></Link>
                 <div className="version my-auto ml-3 bg-stone-700 px-2 py-1 text-xs rounded-xl text-stone-400">
-                    <p>v0.0.2</p>
+                    <p>v0.0.3</p>
                 </div>
             </div>
 

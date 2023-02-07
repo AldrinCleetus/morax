@@ -12,10 +12,7 @@ const MonthView = (props:MonthViewProps) => {
 
     const [month, setMonth] = useState(getMonth())
     const week = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-    const data = [
-        { label: 'Month Calendar', value: 'month' },
-        { label: 'Timeline', value: 'timeline' }
-    ]
+
 
 
     return ( 
