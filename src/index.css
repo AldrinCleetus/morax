@@ -32,6 +32,10 @@ body,
   grid-template-rows: 30px repeat(5, minmax(100px, max-content));
 }
 
+.day-highlight:hover {
+  outline: 2px solid #339af0;
+}
+
 @media only screen and (max-width: 1910px) {
   .grid-container {
     grid-template-columns: repeat(7, 1fr);
