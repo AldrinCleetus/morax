@@ -2,12 +2,13 @@ import { Dispatch, useState } from "react";
 import { getMonth } from "../Util/Month";
 import Title from "./Title";
 import Day from "./Day";
+import { event } from "../Types/CalendarTypes";
 
 
 type MonthViewProps = {
     title: string,
-    AddEventModal: Dispatch<React.SetStateAction<boolean>>,
-    AddEvent: (day:Date)=> void
+    AddEvent: (day:Date)=> void,
+    events: event[]
 }
 
 const MonthView = (props:MonthViewProps) => {
@@ -37,7 +38,7 @@ const MonthView = (props:MonthViewProps) => {
                                     row.map(
                                         (day,idx)=>{
 
-                                            return <Day key={index * 7 + idx} day={day} id={idx} onClick={()=>{props.AddEvent(day.toDate())}}></Day>
+                                            return <Day key={index * 7 + idx} day={day} id={idx} onClick={()=>{props.AddEvent(day.toDate())}} events={props.events}></Day>
                                             
                                         }
                                     )
