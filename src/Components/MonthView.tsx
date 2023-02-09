@@ -3,6 +3,7 @@ import { getMonth } from "../Util/Month";
 import Title from "./Title";
 import Day from "./Day";
 import { event } from "../Types/CalendarTypes";
+import React from "react";
 
 
 type MonthViewProps = {
@@ -33,7 +34,7 @@ const MonthView = (props:MonthViewProps) => {
 
                     {
                         month.map((row,index) => {
-                            return <>
+                            return <React.Fragment key={index}>
                                 {
                                     row.map(
                                         (day,idx)=>{
@@ -43,7 +44,7 @@ const MonthView = (props:MonthViewProps) => {
                                         }
                                     )
                                 }
-                            </>
+                            </React.Fragment>
                             
                         })
                     }
