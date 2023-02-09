@@ -36,6 +36,10 @@ body,
   outline: 2px solid #339af0;
 }
 
+.text-shadow {
+  text-shadow: 2px 2px rgb(35, 35, 35);
+}
+
 @media only screen and (max-width: 1910px) {
   .grid-container {
     grid-template-columns: repeat(7, 1fr);

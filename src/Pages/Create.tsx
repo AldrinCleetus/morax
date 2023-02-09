@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import MonthView from "../Components/MonthView";
 import Timeline from "../Components/Timeline";
 import CalenderEditor from "../Components/CalendarEditor";
-import { Button, Modal } from "@mantine/core";
+import { Button, Modal, TextInput } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,16 +16,29 @@ const Create = () => {
     const [opened, setOpened] = useState(false)
     const [allEvents,setAllEvents] = useState<event[]>([])
 
+
+    // Event Properties
     const [newEvent,setNewEvent] = useState<event>({
         startDate: null,
         endDate: null,
+        title: ""
     })
+    const [eventTitle,setEventTitle] = useState("")
+
+    const UpdateEventTitle = (event:string)=>{
+        setNewEvent(prev => {
+            return{
+                ...prev,
+                title: event}
+        })
+    }
 
     const AddNewEvent = (day:Date)=>{
         setOpened(true)
         setNewEvent(prev => {
             return{
                 ...prev,
+                title: "",
                 startDate: day}
         })
     }
@@ -43,6 +56,7 @@ const Create = () => {
         allEvents.push(newEvent)
         console.log(allEvents)
     }
+
     
 
     return ( 
@@ -55,6 +69,7 @@ const Create = () => {
                 <div className="my-2 font-bold text-md">Date</div>
                 <DatePicker className='my-2' placeholder="Pick date" label="Event date" defaultValue={newEvent.startDate} onChange={e => UpdateEventDate(e,"startDate")} required clearable={false}/>
                 <DatePicker className='my-2' placeholder="Pick date" label="End date (Optional)" onChange={e => UpdateEventDate(e,"endDate")} excludeDate={(date) => newEvent.startDate? date < newEvent.startDate : false}/>
+                <TextInput placeholder="Title" label="Title of the Event" onChange={e => UpdateEventTitle(e.currentTarget.value)}/>
                 <Button className="my-2" variant="default" color="dark" leftIcon={ <FontAwesomeIcon icon={faCheck} />} onClick={AddEventToCalendar}>
                    Add 
                 </Button>

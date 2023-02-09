@@ -22,7 +22,7 @@ const MonthView = (props:MonthViewProps) => {
         <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col">
                 
                 <Title name={props.title}></Title>
-                <div className="month mx-auto mt-5 font-bold text-2xl">January</div>
+                <div className="month mx-auto mt-5 font-bold text-4xl">January</div>
                 <div className="grid grid-container m-5  gap-2 ">
                     
                     {
