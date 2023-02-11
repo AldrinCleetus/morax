@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import MonthView from "../Components/MonthView";
 import Timeline from "../Components/Timeline";
 import CalenderEditor from "../Components/CalendarEditor";
-import { Button, Modal, TextInput } from "@mantine/core";
-import { DatePicker } from "@mantine/dates";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { event } from "../Types/CalendarTypes";
 import AddEventModal from "../Components/AddEventModal";
+import { FileWithPath } from '@mantine/dropzone';
+
 
 
 const Create = () => {
@@ -16,6 +14,10 @@ const Create = () => {
     const [title, setTitle] = useState<string>("Placeholder")
     const [opened, setOpened] = useState(false)
     const [allEvents,setAllEvents] = useState<event[]>([])
+
+    
+
+    const [eventImage,setEventImage] = useState<FileWithPath | undefined>()
 
 
     // Event Properties
@@ -35,6 +37,7 @@ const Create = () => {
     }
 
     const AddNewEvent = (day:Date)=>{
+        setEventImage(undefined)
         setOpened(true)
         setNewEvent(prev => {
             return{
@@ -66,6 +69,8 @@ const Create = () => {
             <AddEventModal 
             modalStatus={opened} 
             newEvent={newEvent} 
+            image={eventImage}
+            SetImage={setEventImage}
             SetModalStatus={setOpened} 
             UpdateEventDate={UpdateEventDate}
             UpdateEventTitle={UpdateEventTitle} 
