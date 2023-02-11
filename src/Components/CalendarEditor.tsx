@@ -34,9 +34,10 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                 <div className="mx-auto my-5 font-bold text-xl text-center">Events</div>
                 <div className='flex flex-col flex-shrink-0 gap-1 overflow-y-scroll h-96 '>
                     {props.events.map((event,index)=>{
-                        return <div key={index+event.title} className="bg-stone-800 p-4 flex-shrink-0 flex flex-row justify-between w-[90%] overflow-hidden mx-auto">
-                            <p className='w-32 truncate'>{event.title}</p>
+                        return <div key={index+event.title} className={`bg-stone-800 relative p-4 flex-shrink-0 flex flex-row justify-between w-[90%] overflow-hidden mx-auto `}>
+                            {event.title ? <p className='w-32 truncate z-10 bg-blue-600 rounded-md px-2'>{event.title}</p> : <div></div>}
                             <div className='flex flex-row gap-2'>
+                            <img src={event.image} className='absolute top-0 left-0 ' alt="" />
                             <ActionIcon variant="filled" color='red'><FontAwesomeIcon icon={faRemove}/></ActionIcon>
                             <ActionIcon variant="filled" color='blue'><FontAwesomeIcon icon={faPenToSquare}/></ActionIcon>
                             </div>

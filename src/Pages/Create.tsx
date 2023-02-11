@@ -15,16 +15,14 @@ const Create = () => {
     const [opened, setOpened] = useState(false)
     const [allEvents,setAllEvents] = useState<event[]>([])
 
-    
-
-    const [eventImage,setEventImage] = useState<FileWithPath | undefined>()
 
 
     // Event Properties
     const [newEvent,setNewEvent] = useState<event>({
         startDate: null,
         endDate: null,
-        title: ""
+        title: "",
+        image: undefined
     })
     //const [eventTitle,setEventTitle] = useState("")
 
@@ -37,12 +35,12 @@ const Create = () => {
     }
 
     const AddNewEvent = (day:Date)=>{
-        setEventImage(undefined)
         setOpened(true)
         setNewEvent(prev => {
             return{
                 ...prev,
                 title: "",
+                image: undefined,
                 startDate: day}
         })
     }
@@ -61,6 +59,14 @@ const Create = () => {
         console.log(allEvents)
     }
 
+    const UpdateImage = (newImage: string | undefined)=>{
+        setNewEvent(prev => {
+            return{
+                ...prev,
+                image: newImage}
+        })
+    }
+
     
 
     return ( 
@@ -69,8 +75,7 @@ const Create = () => {
             <AddEventModal 
             modalStatus={opened} 
             newEvent={newEvent} 
-            image={eventImage}
-            SetImage={setEventImage}
+            SetImage={UpdateImage}
             SetModalStatus={setOpened} 
             UpdateEventDate={UpdateEventDate}
             UpdateEventTitle={UpdateEventTitle} 

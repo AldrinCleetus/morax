@@ -9,6 +9,7 @@ import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 
 
 const AddEventModal = (props: AddEventModalProps) => {
+
     return ( 
         <Modal
             opened={props.modalStatus}
@@ -21,20 +22,20 @@ const AddEventModal = (props: AddEventModalProps) => {
 
                 <Dropzone
                 className="my-2 flex flex-col"
-                onDrop={(files) => props.SetImage(files[0])}
+                onDrop={(files) => props.SetImage(URL.createObjectURL(files[0]))}
                 onReject={(files) => props.SetImage(undefined)}
                 maxSize={3 * 1024 ** 2}
                 accept={IMAGE_MIME_TYPE}
                 >
                     
                     
-                    {props.image === undefined ?  
+                    {props.newEvent.image === undefined ?  
                     <>
                     <div className="text-center"><FontAwesomeIcon icon={faImage} /></div>
                     <p className="text-center">Drag images here or click to select files</p>
                     </> :
                     
-                    <img src={URL.createObjectURL(props.image)} alt="helklo" />
+                    <img src={props.newEvent.image} alt="helklo" />
                     
                     }
 
