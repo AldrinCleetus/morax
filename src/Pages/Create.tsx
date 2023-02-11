@@ -24,7 +24,7 @@ const Create = () => {
         endDate: null,
         title: ""
     })
-    const [eventTitle,setEventTitle] = useState("")
+    //const [eventTitle,setEventTitle] = useState("")
 
     const UpdateEventTitle = (event:string)=>{
         setNewEvent(prev => {
@@ -63,20 +63,14 @@ const Create = () => {
     return ( 
         <div className="flex justify-center">
 
-            {/* <Modal
-            opened={opened}
-            onClose={() => setOpened(false)}
-            title="Add Event">
-                <div className="my-2 font-bold text-md">Date</div>
-                <DatePicker className='my-2' placeholder="Pick date" label="Event date" defaultValue={newEvent.startDate} onChange={e => UpdateEventDate(e,"startDate")} required clearable={false}/>
-                <DatePicker className='my-2' placeholder="Pick date" label="End date (Optional)" onChange={e => UpdateEventDate(e,"endDate")} excludeDate={(date) => newEvent.startDate? date < newEvent.startDate : false}/>
-                <TextInput placeholder="Title" label="Title of the Event" onChange={e => UpdateEventTitle(e.currentTarget.value)}/>
-                <Button className="my-2" variant="default" color="dark" leftIcon={ <FontAwesomeIcon icon={faCheck} />} onClick={AddEventToCalendar}>
-                   Add 
-                </Button>
-            </Modal> */}
-
-            <AddEventModal modalStatus={opened} newEvent={newEvent} SetModalStatus={setOpened} UpdateEventDate={UpdateEventDate} UpdateEventTitle={UpdateEventTitle} AddEventToCalendar={AddEventToCalendar}></AddEventModal>
+            <AddEventModal 
+            modalStatus={opened} 
+            newEvent={newEvent} 
+            SetModalStatus={setOpened} 
+            UpdateEventDate={UpdateEventDate}
+            UpdateEventTitle={UpdateEventTitle} 
+            AddEventToCalendar={AddEventToCalendar}
+            ></AddEventModal>
             
             {selectedMonthStyle === 'month' && <MonthView events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
             {selectedMonthStyle === 'timeline' && <Timeline></Timeline>}
@@ -84,6 +78,7 @@ const Create = () => {
             <CalenderEditor 
             CalendarTypeSetFunction={setSelectedMonthStyle}
             TitleSetFunction={setTitle}
+            events={allEvents}
             ></CalenderEditor>
             
         </div>
