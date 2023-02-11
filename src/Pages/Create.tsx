@@ -7,6 +7,7 @@ import { DatePicker } from "@mantine/dates";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { event } from "../Types/CalendarTypes";
+import AddEventModal from "../Components/AddEventModal";
 
 
 const Create = () => {
@@ -62,7 +63,7 @@ const Create = () => {
     return ( 
         <div className="flex justify-center">
 
-            <Modal
+            {/* <Modal
             opened={opened}
             onClose={() => setOpened(false)}
             title="Add Event">
@@ -73,7 +74,9 @@ const Create = () => {
                 <Button className="my-2" variant="default" color="dark" leftIcon={ <FontAwesomeIcon icon={faCheck} />} onClick={AddEventToCalendar}>
                    Add 
                 </Button>
-            </Modal>
+            </Modal> */}
+
+            <AddEventModal modalStatus={opened} newEvent={newEvent} SetModalStatus={setOpened} UpdateEventDate={UpdateEventDate} UpdateEventTitle={UpdateEventTitle} AddEventToCalendar={AddEventToCalendar}></AddEventModal>
             
             {selectedMonthStyle === 'month' && <MonthView events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
             {selectedMonthStyle === 'timeline' && <Timeline></Timeline>}
