@@ -24,7 +24,7 @@ const MonthView = (props:MonthViewProps) => {
                 
                 <Title name={props.title}></Title>
                 <div className="month mx-auto mt-5 font-bold text-4xl">January</div>
-                <div className="grid grid-container m-5  gap-2 ">
+                <div className="justify-center grid grid-container m-5  gap-2 ">
                     
                     {
                         week.map(day =>{

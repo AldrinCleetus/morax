@@ -16,14 +16,21 @@ const Day = (props:DayProps) => {
                         // console.log(event.startDate, props.day.toDate())
                         return <div key={event.title + Math.random() * 10} className="relative rounded h-[100%] overflow-hidden">
                             <h3 className="absolute  text-white text-shadow font-light p-2">{event.title + "START"}</h3>
-                            <img className="h-[100%] object-cover object-left" src={event.image} alt="" />
+                            {event.image ? 
+                            <img className="h-[100%] w-[100%] object-cover object-left" src={event.image} alt="" />:
+                            <div className="h-[100%] object-cover object-fit bg-blue-500"></div>}
+                            
+                            
+
                         </div>
                     }
 
-                    if(event.endDate){
-                        if(event.startDate.getTime() < props.day.toDate().getTime() && event.endDate.getTime() > props.day.toDate().getTime()){
+                    if(event.endDate && event.startDate){
+                        if(event.startDate?.getTime() < props.day.toDate().getTime() && event.endDate.getTime() > props.day.toDate().getTime()){
                             return <div key={event.title + Math.random() * 10} className="relative rounded  h-[100%] overflow-hidden">
-                                <img className="h-[100%] object-cover object-left" src={event.image} alt="" />
+                                {event.image ? 
+                            <img className="h-[100%] w-[100%] object-cover object-left" src={event.image} alt="" />:
+                            <div className="h-[100%] object-cover object-fit bg-blue-500"></div>}
                             </div>
                         }
                     }
@@ -31,7 +38,10 @@ const Day = (props:DayProps) => {
                     if(event.endDate?.toDateString() === props.day.toDate().toDateString()){
                         // console.log(event.startDate, props.day.toDate())
                         return <div key={event.title + Math.random() * 10} className="relative rounded  h-[100%] overflow-hidden">
-                            <img className="h-[100%] object-cover object-left" src={event.image} alt="" />
+                           
+                            {event.image ? 
+                            <img className="h-[100%] w-[100%] object-cover object-left" src={event.image} alt="" />:
+                            <div className="h-[100%] object-cover object-fit bg-gradient-to-r  from-blue-500 to-transparent"></div>}
                         </div>
                     }
 

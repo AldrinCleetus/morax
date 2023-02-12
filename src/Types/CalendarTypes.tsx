@@ -2,7 +2,7 @@ import dayjs from "dayjs"
 import { Dispatch } from "react"
 
 export type event = {
-    startDate: Date 
+    startDate: Date | null
     endDate: Date| null
     title: string
     image: string | undefined
