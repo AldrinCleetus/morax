@@ -1,9 +1,8 @@
 import dayjs from "dayjs"
 import { Dispatch } from "react"
-import { FileWithPath } from '@mantine/dropzone';
 
 export type event = {
-    startDate: Date | null
+    startDate: Date 
     endDate: Date| null
     title: string
     image: string | undefined

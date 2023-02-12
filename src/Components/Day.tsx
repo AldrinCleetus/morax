@@ -14,8 +14,23 @@ const Day = (props:DayProps) => {
                 props.events?.map(event => {
                     if(event.startDate?.toDateString() === props.day.toDate().toDateString()){
                         // console.log(event.startDate, props.day.toDate())
+                        return <div key={event.title + Math.random() * 10} className="relative rounded h-[100%] overflow-hidden">
+                            <h3 className="absolute  text-white text-shadow font-light p-2">{event.title + "START"}</h3>
+                            <img className="h-[100%] object-cover object-left" src={event.image} alt="" />
+                        </div>
+                    }
+
+                    if(event.endDate){
+                        if(event.startDate.getTime() < props.day.toDate().getTime() && event.endDate.getTime() > props.day.toDate().getTime()){
+                            return <div key={event.title + Math.random() * 10} className="relative rounded  h-[100%] overflow-hidden">
+                                <img className="h-[100%] object-cover object-left" src={event.image} alt="" />
+                            </div>
+                        }
+                    }
+
+                    if(event.endDate?.toDateString() === props.day.toDate().toDateString()){
+                        // console.log(event.startDate, props.day.toDate())
                         return <div key={event.title + Math.random() * 10} className="relative rounded  h-[100%] overflow-hidden">
-                            <h3 className="absolute  text-white text-shadow font-light p-2">{event.title}</h3>
                             <img className="h-[100%] object-cover object-left" src={event.image} alt="" />
                         </div>
                     }
