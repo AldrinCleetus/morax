@@ -1,4 +1,4 @@
-import { Button, Modal, TextInput } from "@mantine/core";
+import { Button, ColorPicker, Modal, TextInput } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { AddEventModalProps } from "../Types/CalendarTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,6 +42,8 @@ const AddEventModal = (props: AddEventModalProps) => {
                    
 
                 </Dropzone>
+
+                <ColorPicker onChange={e => props.SetColor(e)} className="w-[100%]" withPicker={false} swatchesPerRow={7} format="hex" swatches={['#25262b', '#868e96', '#fa5252', '#e64980', '#be4bdb', '#7950f2', '#4c6ef5', '#228be6', '#15aabf', '#12b886', '#40c057', '#82c91e', '#fab005', '#fd7e14']} />
 
 
                 <Button className="my-2" variant="default" color="dark" leftIcon={ <FontAwesomeIcon icon={faCheck} />} onClick={props.AddEventToCalendar}>

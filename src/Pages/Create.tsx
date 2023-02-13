@@ -22,7 +22,8 @@ const Create = () => {
         startDate: null,
         endDate: null,
         title: "",
-        image: undefined
+        image: undefined,
+        color: "#339af0"
     })
     //const [eventTitle,setEventTitle] = useState("")
 
@@ -67,6 +68,15 @@ const Create = () => {
         })
     }
 
+    const UpdateColor = (color: string) =>{
+        setNewEvent(prev =>{
+            return{
+                ...prev,
+                color: color
+            }
+        })
+    }
+
     
 
     return ( 
@@ -76,6 +86,7 @@ const Create = () => {
             modalStatus={opened} 
             newEvent={newEvent} 
             SetImage={UpdateImage}
+            SetColor={UpdateColor}
             SetModalStatus={setOpened} 
             UpdateEventDate={UpdateEventDate}
             UpdateEventTitle={UpdateEventTitle} 

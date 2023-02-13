@@ -6,6 +6,7 @@ export type event = {
     endDate: Date| null
     title: string
     image: string | undefined
+    color: string
 }
 
 export type DayProps = {
@@ -19,6 +20,7 @@ export type AddEventModalProps = {
     modalStatus: boolean
     newEvent: event
     SetImage :(newImage: string | undefined) => void
+    SetColor: (color: string) => void
     SetModalStatus: Dispatch<React.SetStateAction<boolean>>
     UpdateEventDate: (day: Date| null, property: "startDate" | 'endDate') => void
     UpdateEventTitle: (event:string) => void
