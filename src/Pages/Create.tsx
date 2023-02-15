@@ -42,7 +42,9 @@ const Create = () => {
                 ...prev,
                 title: "",
                 image: undefined,
-                startDate: day}
+                startDate: day,
+                endDate: null
+            }
         })
     }
 

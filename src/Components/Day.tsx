@@ -14,13 +14,21 @@ const Day = (props:DayProps) => {
                     
                     if(event.startDate?.toDateString() === props.day.toDate().toDateString()){
                         // console.log(event.startDate, props.day.toDate())
-                        return <div key={event.title + Math.random() * 10} className="relative rounded h-[100%] overflow-hidden">
-                            <h3 className="absolute  text-white text-shadow font-light p-2">{event.title }</h3>
+                        return <div key={event.title + Math.random() * 10} className=" rounded h-[100%] overflow-hidden ">
+                            {/* <h3 className="  text-white truncate text-shadow font-light p-2 h-[100%] object-cover object-fit bg-stone-500">{event.title}</h3> */}
                             {event.image ? 
-                            <img className="h-[100%] w-[100%] object-cover object-left" src={event.image} alt="" />:
-                            <div className="h-[100%] object-cover object-fit" style={{
+                            <>
+                            <h3 className="absolute w-[50%] text-white truncate text-shadow font-light p-2 h-[100%]">{event.title}</h3>
+                            <img className="h-[100%] w-[100%] object-cover object-left" src={event.image} alt="" />
+                            </>:
+                            <h3 className="  text-white truncate text-shadow font-light p-2 h-[100%] object-cover object-fit bg-stone-500"
+                            style={{
                                 backgroundColor: event.color
-                            }}></div>}
+                            }}>{event.title}</h3>
+                            // <div className="h-[100%] object-cover object-fit" style={{
+                            //     backgroundColor: event.color
+                            // }}></div>
+                        }
                             
                             
 
