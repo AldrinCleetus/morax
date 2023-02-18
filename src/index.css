@@ -37,11 +37,12 @@ body,
 }
 
 .text-shadow {
-  text-shadow: 2px 2px rgb(35, 35, 35);
+  text-shadow: 0px 0px rgb(35, 35, 35);
 }
 
-.end-shadow {
-  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
+.text-stroke {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 @media only screen and (max-width: 1910px) {

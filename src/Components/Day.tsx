@@ -6,7 +6,7 @@ import { DayProps, event } from "../Types/CalendarTypes";
 const Day = (props:DayProps) => {
 
     return ( 
-        <div className="relative rounded-md bg-stone-800  flex flex-col gap-1 cursor-pointer day-highlight"  onClick={props.onClick}>
+        <div className="relative rounded-md bg-stone-800/50 flex flex-col gap-1 cursor-pointer day-highlight"  onClick={props.onClick}>
             <p className=" m-0 absolute text-right  bottom-0 right-1 z-10 text-shadow ">{props.day.format("DD")}</p>
             {
                 

@@ -14,9 +14,10 @@ type updateEvent = {
 const Create = () => {
     
     const [selectedMonthStyle,setSelectedMonthStyle] = useState('month')
-    const [title, setTitle] = useState<string>("Placeholder")
+    const [title, setTitle] = useState<string>("")
     const [opened, setOpened] = useState(false)
     const [allEvents,setAllEvents] = useState<event[]>([])
+    const [calendarBackgroundImage,setCalendarBackgroundImage] = useState<string | undefined>(undefined)
 
     const [updateEvent,setUpdateEvent] = useState<updateEvent>({
         update: false,
@@ -128,7 +129,7 @@ const Create = () => {
     }
 
     return ( 
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
 
             <AddEventModal 
             modalStatus={opened} 
@@ -141,15 +142,17 @@ const Create = () => {
             AddEventToCalendar={AddEventToCalendar}
             ></AddEventModal>
             
-            {selectedMonthStyle === 'month' && <MonthView events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
+            {selectedMonthStyle === 'month' && <MonthView backgroundImage={calendarBackgroundImage} events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
             {selectedMonthStyle === 'timeline' && <Timeline></Timeline>}
 
             <CalenderEditor 
+            SetBackgroundImage={setCalendarBackgroundImage}
             CalendarTypeSetFunction={setSelectedMonthStyle}
             TitleSetFunction={setTitle}
             events={allEvents}
             DeleteEvent={deleteEvent}
             UpdateEvent={editEvent}
+            BackgroundImage={calendarBackgroundImage}
             ></CalenderEditor>
             
         </div>

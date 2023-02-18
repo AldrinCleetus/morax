@@ -1,17 +1,20 @@
 import { ActionIcon, Button, Input, SegmentedControl } from '@mantine/core';
 import { Dispatch, useState } from 'react';
-import { faHeading, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faHeading, faImage, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DatePicker } from '@mantine/dates';
 import { event } from '../Types/CalendarTypes';
 import { faRemove } from '@fortawesome/free-solid-svg-icons';
+import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 
 
 type CalenderEditorProps = {
     CalendarTypeSetFunction: Dispatch<React.SetStateAction<string>>,
     TitleSetFunction: Dispatch<React.SetStateAction<string>>,
     DeleteEvent: (id: number) => void,
-    UpdateEvent: (event: event, id: number)=> void
+    UpdateEvent: (event: event, id: number)=> void,
+    SetBackgroundImage: Dispatch<React.SetStateAction<string | undefined>>
+    BackgroundImage: string | undefined,
     events: event[]
 }
 
@@ -26,13 +29,38 @@ const CalenderEditor = (props:CalenderEditorProps) => {
 
 
     return ( 
-        <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[20%] border-stone-700 border-2 rounded-xl flex px-5 ">
+        <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[20%] border-stone-700 border-2 rounded-xl flex px-5 overflow-y-scroll">
             <div className='w-[100%] '>
                 <div className="mx-auto my-5 font-bold text-xl text-center">Calendar Editor</div>
                 <div className="my-2 font-bold text-md">Style</div>
                 <SegmentedControl data={data} onChange={props.CalendarTypeSetFunction} radius={'md'}/>
                 <div className="my-2 font-bold text-md">Name</div>
                 <Input icon={<FontAwesomeIcon icon={faHeading} />} placeholder="Title" radius="md" onChange={e => props.TitleSetFunction(e.target.value)}/>
+                <Dropzone
+                className="my-2 flex flex-col  "
+                onDrop={(files) => props.SetBackgroundImage(URL.createObjectURL(files[0]))}
+                onReject={(files) => props.SetBackgroundImage(undefined)}
+                maxSize={3 * 1024 ** 2}
+                accept={IMAGE_MIME_TYPE}
+                >
+                    
+                    
+                    {props.BackgroundImage === undefined ?  
+                    <>
+                    <div className="text-center"><FontAwesomeIcon icon={faImage} /></div>
+                    <p className="text-center">Drag images here or click to select files</p>
+                    </> :
+                    
+                    <img src={props.BackgroundImage} alt="helklo" />
+                    
+                    }   
+                
+                   
+                    
+                </Dropzone>
+                {props.BackgroundImage ? 
+                   <ActionIcon variant="filled" color='red' onClick={()=>props.SetBackgroundImage(undefined)}><FontAwesomeIcon icon={faRemove}/></ActionIcon>:
+                   ""}
                 <div className="mx-auto my-5 font-bold text-xl text-center">Events</div>
                 <div className='flex flex-col flex-shrink-0 gap-1 overflow-y-scroll h-96 '>
                     {props.events.map((event,index)=>{

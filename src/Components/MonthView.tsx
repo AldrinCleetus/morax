@@ -8,8 +8,10 @@ import React from "react";
 
 type MonthViewProps = {
     title: string,
+    events: event[],
+    backgroundImage: string | undefined,
     AddEvent: (day:Date)=> void,
-    events: event[]
+
 }
 
 const MonthView = (props:MonthViewProps) => {
@@ -23,15 +25,22 @@ const MonthView = (props:MonthViewProps) => {
 
 
     return ( 
-        <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col">
+        <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col h-[50%]"
+        style={{
+            backgroundImage: `url(${props.backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+
+            
+        }}>
                 
                 <Title name={props.title}></Title>
-                <div className="month mx-auto mt-5 font-bold text-4xl">{allMonths[today.getMonth()]}</div>
+                <div className="month mx-auto mt-5 font-bold text-4xl text-shadow text-stroke">{allMonths[today.getMonth()]}</div>
                 <div className="justify-center grid grid-container m-5  gap-2 ">
                     
                     {
                         week.map(day =>{
-                            return <div key={day} className="text-xl flex justify-center">{day}</div>
+                            return <div key={day} className="text-xl flex justify-center text-stroke">{day}</div>
                         })
                     }
 
