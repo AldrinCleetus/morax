@@ -1,11 +1,13 @@
 import { ActionIcon, Button, Input, SegmentedControl } from '@mantine/core';
-import { Dispatch, useState } from 'react';
-import { faHeading, faImage, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { Dispatch, RefObject, useState } from 'react';
+import { faDownload, faHeading, faImage, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DatePicker } from '@mantine/dates';
 import { event } from '../Types/CalendarTypes';
 import { faRemove } from '@fortawesome/free-solid-svg-icons';
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+
+
 
 
 type CalenderEditorProps = {
@@ -14,6 +16,8 @@ type CalenderEditorProps = {
     DeleteEvent: (id: number) => void,
     UpdateEvent: (event: event, id: number)=> void,
     SetBackgroundImage: Dispatch<React.SetStateAction<string | undefined>>
+    DownloadScreenshot: (referenceElement: RefObject<HTMLDivElement>) => void,
+    imageReference: React.RefObject<HTMLDivElement>,
     BackgroundImage: string | undefined,
     events: event[]
 }
@@ -30,12 +34,13 @@ const CalenderEditor = (props:CalenderEditorProps) => {
 
     return ( 
         <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[20%] border-stone-700 border-2 rounded-xl flex px-5 overflow-y-scroll ">
-            <div className='w-[100%] '>
+            <div className='w-[100%] flex flex-col'>
                 <div className="mx-auto my-5 font-bold text-xl text-center">Calendar Editor</div>
                 <div className="my-2 font-bold text-md">Style</div>
                 <SegmentedControl data={data} onChange={props.CalendarTypeSetFunction} radius={'md'}/>
                 <div className="my-2 font-bold text-md">Name</div>
                 <Input icon={<FontAwesomeIcon icon={faHeading} />} placeholder="Title" radius="md" onChange={e => props.TitleSetFunction(e.target.value)}/>
+                <div className="my-2 font-bold text-md">Background Image</div>
                 <div className='flex flex-row justify-center'>
                 <Dropzone
                 className="my-2 flex flex-col w-[50%] "
@@ -64,7 +69,10 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                    ""}
                 </div>
 
-                <div className="mx-auto my-2 font-bold text-xl text-center">Events</div>
+                <Button onClick={()=>{props.DownloadScreenshot(props.imageReference)}} className="mx-auto my-2" variant="outline" leftIcon={ <FontAwesomeIcon icon={faDownload}/>}>Download Calendar Screenshot</Button>
+                
+
+                <div className="my-2 font-bold text-md">Events</div>
                 <div className='flex flex-col flex-shrink-0 flex-grow-0 gap-1  h-4'>
                     {props.events.map((event,index)=>{
                         return <div key={index+event.title} className={`bg-stone-800 relative p-4 flex-shrink-0 flex flex-row justify-between w-[90%] overflow-hidden mx-auto `}>

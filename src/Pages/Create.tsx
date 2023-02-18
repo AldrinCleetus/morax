@@ -158,7 +158,7 @@ const Create = () => {
       };
 
 
-    const test = (referenceElement: RefObject<HTMLDivElement>)=>{
+    const downloadScreenshot = (referenceElement: RefObject<HTMLDivElement>)=>{
 
         if(referenceElement.current){
             htmlToImage.toJpeg(referenceElement.current,{ 
@@ -230,9 +230,12 @@ const Create = () => {
             DeleteEvent={deleteEvent}
             UpdateEvent={editEvent}
             BackgroundImage={calendarBackgroundImage}
+            imageReference={imageRef}
+            DownloadScreenshot={downloadScreenshot}
+            
             ></CalenderEditor>
 
-            {/* <Button onClick={()=>{test(imageRef)}} className="mx-2 my-5" variant="default" color="dark" leftIcon={ <img src="icons/github.svg" alt="" width={"20px"}/>}>Download</Button> */}
+            {/* <Button onClick={()=>{downloadScreenshot(imageRef)}} className="mx-2 my-5" variant="default" color="dark" leftIcon={ <img src="icons/github.svg" alt="" width={"20px"}/>}>Download</Button> */}
             
         </div>
      );
