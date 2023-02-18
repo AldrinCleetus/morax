@@ -79,6 +79,13 @@ const Create = () => {
         })
     }
 
+    const deleteEvent = (eventId: number)=>{
+        setAllEvents(prev =>{
+            const newList = prev.filter((event,idx) => idx !== eventId)
+            return newList
+        })
+    }
+
     
 
     return ( 
@@ -102,6 +109,7 @@ const Create = () => {
             CalendarTypeSetFunction={setSelectedMonthStyle}
             TitleSetFunction={setTitle}
             events={allEvents}
+            DeleteEvent={deleteEvent}
             ></CalenderEditor>
             
         </div>
