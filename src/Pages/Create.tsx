@@ -1,9 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { RefObject, useRef, useState } from "react";
 import MonthView from "../Components/MonthView";
 import Timeline from "../Components/Timeline";
 import CalenderEditor from "../Components/CalendarEditor";
 import { event } from "../Types/CalendarTypes";
 import AddEventModal from "../Components/AddEventModal";
+import html2canvas from "html2canvas";
+import { Button } from "@mantine/core";
+
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 type updateEvent = {
     update: boolean,
@@ -128,6 +133,73 @@ const Create = () => {
     }
 
 
+    const imageRef = useRef<HTMLDivElement>(null)
+    const handleDownloadImage = async (referenceElement: RefObject<HTMLDivElement>) => {
+
+        const element = referenceElement.current;
+        
+        if(element){
+            const canvas = await html2canvas(element,{allowTaint:true,useCORS: true,backgroundColor:"#262626",foreignObjectRendering:false});
+            const data = canvas.toDataURL('image/jpg');
+            const link = document.createElement('a');
+    
+            if (typeof link.download === 'string') {
+            link.href = data;
+            link.download = 'image.jpg';
+        
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            } else {
+            window.open(data);
+            }
+        }
+        
+      };
+
+
+    const test = (referenceElement: RefObject<HTMLDivElement>)=>{
+
+        if(referenceElement.current){
+            htmlToImage.toJpeg(referenceElement.current,{ 
+                cacheBust: false,
+                width: window.screenX *0.6 , 
+                height: window.screenY * 0.8 ,  
+                canvasWidth: window.screenX * 2 * 0.6,
+                canvasHeight: window.screenY * 2 * 0.8,
+                style:{
+                    border: "none",
+                    outline: "none",
+                    marginLeft : 'auto',
+                    marginTop: 'auto',
+                    marginRight: 'auto',
+                    borderRadius: "0"
+            }})
+            .then(function (dataUrl) {
+            // download(dataUrl, 'my-node.png');
+            
+            const link = document.createElement('a');
+    
+            if (typeof link.download === 'string') {
+            link.href = dataUrl;
+            link.download = 'image.jpeg';
+        
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            } else {
+            window.open(dataUrl);
+            }
+        });
+        }
+
+        
+    }
+
+
+
+
+
 
     return ( 
         <div className="flex justify-center ">
@@ -143,7 +215,11 @@ const Create = () => {
             AddEventToCalendar={AddEventToCalendar}
             ></AddEventModal>
             
-            {selectedMonthStyle === 'month' && <MonthView  backgroundImage={calendarBackgroundImage} events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
+            {selectedMonthStyle === 'month' && <MonthView  
+            imageReference = {imageRef}
+            backgroundImage={calendarBackgroundImage} 
+            events={allEvents} title={title} 
+            AddEvent={AddNewEvent}></MonthView>}
             {selectedMonthStyle === 'timeline' && <Timeline></Timeline>}
 
             <CalenderEditor 
@@ -155,6 +231,8 @@ const Create = () => {
             UpdateEvent={editEvent}
             BackgroundImage={calendarBackgroundImage}
             ></CalenderEditor>
+
+            {/* <Button onClick={()=>{test(imageRef)}} className="mx-2 my-5" variant="default" color="dark" leftIcon={ <img src="icons/github.svg" alt="" width={"20px"}/>}>Download</Button> */}
             
         </div>
      );

@@ -1,4 +1,4 @@
-import { Dispatch, useState } from "react";
+import { Dispatch, RefObject, useState } from "react";
 import { getMonth } from "../Util/Month";
 import Title from "./Title";
 import Day from "./Day";
@@ -11,6 +11,7 @@ type MonthViewProps = {
     events: event[],
     backgroundImage: string | undefined,
     AddEvent: (day:Date)=> void,
+    imageReference: React.RefObject<HTMLDivElement>
 
 }
 
@@ -25,7 +26,7 @@ const MonthView = (props:MonthViewProps) => {
 
 
     return ( 
-        <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col h-[100%]"
+        <div ref={props.imageReference} className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col h-[100%]"
         style={{
             backgroundImage: `url(${props.backgroundImage})`,
             backgroundSize: "cover",
