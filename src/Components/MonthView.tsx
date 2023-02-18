@@ -14,8 +14,11 @@ type MonthViewProps = {
 
 const MonthView = (props:MonthViewProps) => {
 
-    const [month, setMonth] = useState(getMonth())
+    const today = new Date()
+
+    const [month, setMonth] = useState(getMonth(today.getMonth()))
     const week = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+    const allMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 
 
@@ -23,7 +26,7 @@ const MonthView = (props:MonthViewProps) => {
         <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col">
                 
                 <Title name={props.title}></Title>
-                <div className="month mx-auto mt-5 font-bold text-4xl">January</div>
+                <div className="month mx-auto mt-5 font-bold text-4xl">{allMonths[today.getMonth()]}</div>
                 <div className="justify-center grid grid-container m-5  gap-2 ">
                     
                     {
