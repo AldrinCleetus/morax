@@ -29,15 +29,16 @@ const CalenderEditor = (props:CalenderEditorProps) => {
 
 
     return ( 
-        <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[20%] border-stone-700 border-2 rounded-xl flex px-5 overflow-y-scroll">
+        <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[20%] border-stone-700 border-2 rounded-xl flex px-5 overflow-y-scroll ">
             <div className='w-[100%] '>
                 <div className="mx-auto my-5 font-bold text-xl text-center">Calendar Editor</div>
                 <div className="my-2 font-bold text-md">Style</div>
                 <SegmentedControl data={data} onChange={props.CalendarTypeSetFunction} radius={'md'}/>
                 <div className="my-2 font-bold text-md">Name</div>
                 <Input icon={<FontAwesomeIcon icon={faHeading} />} placeholder="Title" radius="md" onChange={e => props.TitleSetFunction(e.target.value)}/>
+                <div className='flex flex-row justify-center'>
                 <Dropzone
-                className="my-2 flex flex-col  "
+                className="my-2 flex flex-col w-[50%] "
                 onDrop={(files) => props.SetBackgroundImage(URL.createObjectURL(files[0]))}
                 onReject={(files) => props.SetBackgroundImage(undefined)}
                 maxSize={3 * 1024 ** 2}
@@ -59,10 +60,12 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                     
                 </Dropzone>
                 {props.BackgroundImage ? 
-                   <ActionIcon variant="filled" color='red' onClick={()=>props.SetBackgroundImage(undefined)}><FontAwesomeIcon icon={faRemove}/></ActionIcon>:
+                   <ActionIcon className='my-2 ml-2' variant="filled" color='red' onClick={()=>props.SetBackgroundImage(undefined)}><FontAwesomeIcon icon={faRemove}/></ActionIcon>:
                    ""}
-                <div className="mx-auto my-5 font-bold text-xl text-center">Events</div>
-                <div className='flex flex-col flex-shrink-0 gap-1 overflow-y-scroll h-96 '>
+                </div>
+
+                <div className="mx-auto my-2 font-bold text-xl text-center">Events</div>
+                <div className='flex flex-col flex-shrink-0 flex-grow-0 gap-1  h-4'>
                     {props.events.map((event,index)=>{
                         return <div key={index+event.title} className={`bg-stone-800 relative p-4 flex-shrink-0 flex flex-row justify-between w-[90%] overflow-hidden mx-auto `}>
                             {event.title ? <p className='w-32 truncate z-10 bg-blue-600 rounded-md px-2'>{event.title}</p> : <div></div>}
@@ -77,6 +80,7 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                         </div>
                     })}
                 </div>
+                
                 
             </div>
         </div>

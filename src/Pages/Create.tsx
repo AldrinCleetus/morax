@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import MonthView from "../Components/MonthView";
 import Timeline from "../Components/Timeline";
 import CalenderEditor from "../Components/CalendarEditor";
 import { event } from "../Types/CalendarTypes";
 import AddEventModal from "../Components/AddEventModal";
-import { FileWithPath } from '@mantine/dropzone';
 
 type updateEvent = {
     update: boolean,
@@ -128,6 +127,8 @@ const Create = () => {
         })     
     }
 
+
+
     return ( 
         <div className="flex justify-center ">
 
@@ -142,7 +143,7 @@ const Create = () => {
             AddEventToCalendar={AddEventToCalendar}
             ></AddEventModal>
             
-            {selectedMonthStyle === 'month' && <MonthView backgroundImage={calendarBackgroundImage} events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
+            {selectedMonthStyle === 'month' && <MonthView  backgroundImage={calendarBackgroundImage} events={allEvents} title={title} AddEvent={AddNewEvent}></MonthView>}
             {selectedMonthStyle === 'timeline' && <Timeline></Timeline>}
 
             <CalenderEditor 

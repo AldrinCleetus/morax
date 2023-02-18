@@ -25,7 +25,7 @@ const MonthView = (props:MonthViewProps) => {
 
 
     return ( 
-        <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col h-[50%]"
+        <div className="md:w-[80%] lg:w-[70%] w-[90%] xl:w-[60%] m-6 border-2 border-stone-700 rounded-xl flex justify-center flex-col h-[100%]"
         style={{
             backgroundImage: `url(${props.backgroundImage})`,
             backgroundSize: "cover",

@@ -19,6 +19,7 @@
     "@mantine/hooks": "^5.10.2",
     "@mantine/notifications": "^5.10.2",
     "dayjs": "^1.11.7",
+    "html2canvas": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0"
