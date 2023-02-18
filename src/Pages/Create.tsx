@@ -6,7 +6,10 @@ import { event } from "../Types/CalendarTypes";
 import AddEventModal from "../Components/AddEventModal";
 import { FileWithPath } from '@mantine/dropzone';
 
-
+type updateEvent = {
+    update: boolean,
+    index: number
+}
 
 const Create = () => {
     
@@ -14,6 +17,11 @@ const Create = () => {
     const [title, setTitle] = useState<string>("Placeholder")
     const [opened, setOpened] = useState(false)
     const [allEvents,setAllEvents] = useState<event[]>([])
+
+    const [updateEvent,setUpdateEvent] = useState<updateEvent>({
+        update: false,
+        index: 0
+    })
 
 
 
@@ -25,7 +33,7 @@ const Create = () => {
         image: undefined,
         color: "#339af0"
     })
-    //const [eventTitle,setEventTitle] = useState("")
+
 
     const UpdateEventTitle = (event:string)=>{
         setNewEvent(prev => {
@@ -36,6 +44,10 @@ const Create = () => {
     }
 
     const AddNewEvent = (day:Date)=>{
+        setUpdateEvent({
+            update: false,
+            index: 0
+        }) 
         setOpened(true)
         setNewEvent(prev => {
             return{
@@ -58,8 +70,28 @@ const Create = () => {
 
     const AddEventToCalendar = ()=>{
         setOpened(false)
-        allEvents.push(newEvent)
-        console.log(allEvents)
+        if(updateEvent.update){
+
+            setAllEvents(prev =>{
+                
+                const updatedList = prev.map((event,id)=>{
+
+                    if(id === updateEvent.index) {
+                        console.log("huh")
+                        return newEvent
+                    }
+                    else {
+                        return event
+                    }
+                })
+                
+                return updatedList
+            })
+
+            
+        }else{
+            allEvents.push(newEvent)
+        }
     }
 
     const UpdateImage = (newImage: string | undefined)=>{
@@ -86,7 +118,14 @@ const Create = () => {
         })
     }
 
-    
+    const editEvent = (event: event,eventId: number)=>{
+        setOpened(true)
+        setNewEvent(event)
+        setUpdateEvent({
+            update: true,
+            index: eventId
+        })     
+    }
 
     return ( 
         <div className="flex justify-center">
@@ -110,6 +149,7 @@ const Create = () => {
             TitleSetFunction={setTitle}
             events={allEvents}
             DeleteEvent={deleteEvent}
+            UpdateEvent={editEvent}
             ></CalenderEditor>
             
         </div>

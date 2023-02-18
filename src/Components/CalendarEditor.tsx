@@ -10,7 +10,8 @@ import { faRemove } from '@fortawesome/free-solid-svg-icons';
 type CalenderEditorProps = {
     CalendarTypeSetFunction: Dispatch<React.SetStateAction<string>>,
     TitleSetFunction: Dispatch<React.SetStateAction<string>>,
-    DeleteEvent: (id: number) => void
+    DeleteEvent: (id: number) => void,
+    UpdateEvent: (event: event, id: number)=> void
     events: event[]
 }
 
@@ -40,7 +41,7 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                             <div className='flex flex-row gap-2'>
                             <img src={event.image} className='absolute top-0 left-0 ' alt="" />
                             <ActionIcon variant="filled" color='red' onClick={()=>props.DeleteEvent(index)}><FontAwesomeIcon icon={faRemove}/></ActionIcon>
-                            <ActionIcon variant="filled" color='blue'><FontAwesomeIcon icon={faPenToSquare}/></ActionIcon>
+                            <ActionIcon variant="filled" color='blue'onClick={()=>props.UpdateEvent(event,index)}><FontAwesomeIcon icon={faPenToSquare}/></ActionIcon>
                             </div>
 
 

@@ -17,8 +17,8 @@ const AddEventModal = (props: AddEventModalProps) => {
             title="Add Event">
                 <div className="my-2 font-bold text-md">Date</div>
                 <DatePicker className='my-2' placeholder="Pick date" label="Event date" defaultValue={props.newEvent.startDate} onChange={e => props.UpdateEventDate(e,"startDate")} required clearable={false}/>
-                <DatePicker className='my-2' placeholder="Pick date" label="End date (Optional)" onChange={e => props.UpdateEventDate(e,"endDate")} excludeDate={(date) => props.newEvent.startDate? date < props.newEvent.startDate : false}/>
-                <TextInput placeholder="Title" label="Title of the Event" onChange={e => props.UpdateEventTitle(e.currentTarget.value)}/>
+                <DatePicker className='my-2' placeholder="Pick date" label="End date (Optional)" defaultValue={props.newEvent.endDate} onChange={e => props.UpdateEventDate(e,"endDate")} excludeDate={(date) => props.newEvent.startDate? date < props.newEvent.startDate : false}/>
+                <TextInput placeholder="Title" label="Title of the Event" defaultValue={props.newEvent.title} onChange={e => props.UpdateEventTitle(e.currentTarget.value)}/>
 
                 <Dropzone
                 className="my-2 flex flex-col"
