@@ -33,7 +33,7 @@ const CalenderEditor = (props:CalenderEditorProps) => {
 
 
     return ( 
-        <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[20%] border-stone-700 border-2 rounded-xl flex px-5 overflow-y-scroll ">
+        <div className="m-6 md:w-[20%] lg:w-[30%] w-[20%] xl:w-[25%] border-stone-700 border-2 rounded-xl flex px-5 overflow-y-scroll ">
             <div className='w-[100%] flex flex-col'>
                 <div className="mx-auto my-5 font-bold text-xl text-center">Calendar Editor</div>
                 <div className="my-2 font-bold text-md">Style</div>

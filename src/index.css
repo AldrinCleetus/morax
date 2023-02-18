@@ -47,7 +47,7 @@ body,
 
 @media only screen and (max-width: 1910px) {
   .grid-container {
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 30px repeat(5, minmax(70px, 1fr));
+    grid-template-columns: repeat(7, minmax(70px, max-content));
+    grid-template-rows: 30px repeat(5, minmax(70px, max-content));
   }
 }

@@ -163,10 +163,10 @@ const Create = () => {
         if(referenceElement.current){
             htmlToImage.toJpeg(referenceElement.current,{ 
                 cacheBust: false,
-                width: window.screenX *0.6 , 
-                height: window.screenY * 0.8 ,  
-                canvasWidth: window.screenX * 2 * 0.6,
-                canvasHeight: window.screenY * 2 * 0.8,
+                width: referenceElement.current.clientWidth  , 
+                height: referenceElement.current.clientHeight ,  
+                canvasWidth: referenceElement.current.clientWidth * 2 ,
+                canvasHeight: referenceElement.current.clientHeight * 2 ,
                 style:{
                     border: "none",
                     outline: "none",
@@ -232,7 +232,6 @@ const Create = () => {
             BackgroundImage={calendarBackgroundImage}
             imageReference={imageRef}
             DownloadScreenshot={downloadScreenshot}
-            
             ></CalenderEditor>
 
             {/* <Button onClick={()=>{downloadScreenshot(imageRef)}} className="mx-2 my-5" variant="default" color="dark" leftIcon={ <img src="icons/github.svg" alt="" width={"20px"}/>}>Download</Button> */}
