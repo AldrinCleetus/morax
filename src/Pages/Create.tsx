@@ -90,7 +90,7 @@ const Create = () => {
 
             
         }else{
-            allEvents.push(newEvent)
+            setAllEvents(prev => [...prev, newEvent])
         }
     }
 
