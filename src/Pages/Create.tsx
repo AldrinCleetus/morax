@@ -5,7 +5,6 @@ import CalenderEditor from "../Components/CalendarEditor";
 import { event } from "../Types/CalendarTypes";
 import AddEventModal from "../Components/AddEventModal";
 import html2canvas from "html2canvas";
-import { Button } from "@mantine/core";
 
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
@@ -134,28 +133,28 @@ const Create = () => {
 
 
     const imageRef = useRef<HTMLDivElement>(null)
-    const handleDownloadImage = async (referenceElement: RefObject<HTMLDivElement>) => {
+    // const handleDownloadImage = async (referenceElement: RefObject<HTMLDivElement>) => {
 
-        const element = referenceElement.current;
+    //     const element = referenceElement.current;
         
-        if(element){
-            const canvas = await html2canvas(element,{allowTaint:true,useCORS: true,backgroundColor:"#262626",foreignObjectRendering:false});
-            const data = canvas.toDataURL('image/jpg');
-            const link = document.createElement('a');
+    //     if(element){
+    //         const canvas = await html2canvas(element,{allowTaint:true,useCORS: true,backgroundColor:"#262626",foreignObjectRendering:false});
+    //         const data = canvas.toDataURL('image/jpg');
+    //         const link = document.createElement('a');
     
-            if (typeof link.download === 'string') {
-            link.href = data;
-            link.download = 'image.jpg';
+    //         if (typeof link.download === 'string') {
+    //         link.href = data;
+    //         link.download = 'image.jpg';
         
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            } else {
-            window.open(data);
-            }
-        }
+    //         document.body.appendChild(link);
+    //         link.click();
+    //         document.body.removeChild(link);
+    //         } else {
+    //         window.open(data);
+    //         }
+    //     }
         
-      };
+    //   };
 
 
     const downloadScreenshot = (referenceElement: RefObject<HTMLDivElement>)=>{
