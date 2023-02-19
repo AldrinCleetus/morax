@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return ( 
-        <div className="w-screen h-20 flex justify-between text-white p-3">
+        <div className=" h-20 flex justify-between text-white p-3">
 
             <div className="my-auto flex">
                 <img src="icons/logo.svg" alt=""  className="mx-3 w-8"/>
