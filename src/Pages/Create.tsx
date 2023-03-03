@@ -132,9 +132,9 @@ const Create = () => {
 
 
     const imageRef = useRef<HTMLDivElement>(null)
-
+    const [isImageDownloading, setIsImageDownloading] = useState(false)
     const downloadScreenshot = (referenceElement: RefObject<HTMLDivElement>)=>{
-
+        setIsImageDownloading(true)
         if(referenceElement.current){
             htmlToImage.toJpeg(referenceElement.current,{ 
                 cacheBust: false,
@@ -165,6 +165,8 @@ const Create = () => {
             } else {
             window.open(dataUrl);
             }
+
+            setIsImageDownloading(false)
         });
         }
 
@@ -207,6 +209,7 @@ const Create = () => {
             BackgroundImage={calendarBackgroundImage}
             imageReference={imageRef}
             DownloadScreenshot={downloadScreenshot}
+            isDownloading = {isImageDownloading}
             ></CalenderEditor>
 
             {/* <Button onClick={()=>{downloadScreenshot(imageRef)}} className="mx-2 my-5" variant="default" color="dark" leftIcon={ <img src="icons/github.svg" alt="" width={"20px"}/>}>Download</Button> */}

@@ -1,6 +1,6 @@
 import { ActionIcon, Button, Input, SegmentedControl } from '@mantine/core';
 import { Dispatch, RefObject, useState } from 'react';
-import { faDownload, faHeading, faImage, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEllipsis, faHeading, faImage, faPenToSquare, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DatePicker } from '@mantine/dates';
 import { event } from '../Types/CalendarTypes';
@@ -19,7 +19,8 @@ type CalenderEditorProps = {
     DownloadScreenshot: (referenceElement: RefObject<HTMLDivElement>) => void,
     imageReference: React.RefObject<HTMLDivElement>,
     BackgroundImage: string | undefined,
-    events: event[]
+    events: event[],
+    isDownloading: boolean
 }
 
 const CalenderEditor = (props:CalenderEditorProps) => {
@@ -69,7 +70,7 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                    ""}
                 </div>
 
-                <Button onClick={()=>{props.DownloadScreenshot(props.imageReference)}} className="mx-auto my-2" variant="outline" leftIcon={ <FontAwesomeIcon icon={faDownload}/>}>Download Calendar Screenshot</Button>
+                <Button onClick={()=>{props.DownloadScreenshot(props.imageReference)}} className="mx-auto my-2" variant="outline" leftIcon={ <FontAwesomeIcon icon={props.isDownloading? faEllipsis : faDownload}/>}>Download Calendar Screenshot</Button>
                 
 
                 <div className="my-2 font-bold text-md">Events</div>
