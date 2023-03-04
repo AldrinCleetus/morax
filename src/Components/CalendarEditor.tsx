@@ -93,7 +93,7 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                 
             </div>
         </div>
-     );
+    )
 }
  
 export default CalenderEditor;
