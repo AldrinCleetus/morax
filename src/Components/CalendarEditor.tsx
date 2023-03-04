@@ -47,7 +47,7 @@ const CalenderEditor = (props:CalenderEditorProps) => {
                 className="my-2 flex flex-col w-[50%] "
                 onDrop={(files) => props.SetBackgroundImage(URL.createObjectURL(files[0]))}
                 onReject={(files) => props.SetBackgroundImage(undefined)}
-                maxSize={3 * 1024 ** 2}
+                maxSize={5 * 1024 ** 2}
                 accept={IMAGE_MIME_TYPE}
                 >
                     

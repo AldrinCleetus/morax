@@ -18,8 +18,8 @@ const Day = (props:DayProps) => {
                             {/* <h3 className="  text-white truncate text-shadow font-light p-2 h-[100%] object-cover object-fit bg-stone-500">{event.title}</h3> */}
                             {event.image ? 
                             <>
-                            <h3 className="absolute w-[50%] text-white truncate text-shadow font-light p-2 h-[100%]">{event.title}</h3>
-                            <img className="h-[100%] w-[100%] object-cover object-left" src={event.image} alt="" />
+                            <h3 className="absolute w-[50%] text-white  text-shadow font-bold p-2 h-[100%]">{event.title}</h3>
+                            <img className="h-[100%] w-[100%] object-cover object-left rounded" src={event.image} alt="" />
                             </>:
                             <h3 className="  text-white truncate text-shadow font-light p-2 rounded h-[100%] object-cover object-fit "
                             style={{
