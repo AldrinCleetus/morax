@@ -8,7 +8,7 @@
 
 > This customizable event calendar app allows users to create beautiful calendars that showcase important events and images. Users can easily add events, photos, and more to make their calendar unique, and export it as an image to share with others. Perfect for event planning, tracking important dates, or just staying organized and is designed to be easy to use and highly customizable. Start building your perfect calendar today!
 
-### 🏠 [Homepage](https://example.com/)
+### 🏠 [Homepage](https://kalenderevent.vercel.app/)
 
 ## Project Status
 
