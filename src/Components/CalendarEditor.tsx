@@ -1,27 +1,14 @@
 import { ActionIcon, Button, Input, SegmentedControl } from '@mantine/core';
-import { Dispatch, RefObject, useState } from 'react';
 import { faDownload, faEllipsis, faHeading, faImage, faPenToSquare, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { DatePicker } from '@mantine/dates';
-import { event } from '../Types/CalendarTypes';
+import { CalenderEditorProps, event } from '../Types/CalendarTypes';
 import { faRemove } from '@fortawesome/free-solid-svg-icons';
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 
 
 
 
-type CalenderEditorProps = {
-    CalendarTypeSetFunction: Dispatch<React.SetStateAction<string>>,
-    TitleSetFunction: Dispatch<React.SetStateAction<string>>,
-    DeleteEvent: (id: number) => void,
-    UpdateEvent: (event: event, id: number)=> void,
-    SetBackgroundImage: Dispatch<React.SetStateAction<string | undefined>>
-    DownloadScreenshot: (referenceElement: RefObject<HTMLDivElement>) => void,
-    imageReference: React.RefObject<HTMLDivElement>,
-    BackgroundImage: string | undefined,
-    events: event[],
-    isDownloading: boolean
-}
+
 
 const CalenderEditor = (props:CalenderEditorProps) => {
 

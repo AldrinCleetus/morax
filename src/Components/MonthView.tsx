@@ -1,25 +1,13 @@
-import { Dispatch, RefObject, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMonth } from "../Util/Month";
 import Title from "./Title";
 import Day from "./Day";
-import { event } from "../Types/CalendarTypes";
+import { MonthViewProps, event } from "../Types/CalendarTypes";
 import React from "react";
-import dayjs from "dayjs";
 import { ActionIcon } from "@mantine/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight, faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
+import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
 
-
-
-
-type MonthViewProps = {
-    title: string,
-    events: event[],
-    backgroundImage: string | undefined,
-    AddEvent: (day:Date)=> void,
-    imageReference: React.RefObject<HTMLDivElement>
-
-}
 
 const MonthView = (props:MonthViewProps) => {
 
@@ -33,7 +21,6 @@ const MonthView = (props:MonthViewProps) => {
 
     useEffect(() => {
       setMonth(getMonth(monthIndex))
-  
     }, [monthIndex])
     
 
