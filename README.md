@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Project Morax 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.8-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/AldrinCleetus/grimlock/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/AldrinCleetus/grimlock" />
   </a>
