@@ -4,14 +4,12 @@ import Timeline from "../Components/Timeline";
 import CalenderEditor from "../Components/CalendarEditor";
 import { event } from "../Types/CalendarTypes";
 import AddEventModal from "../Components/AddEventModal";
+import { updateEvent } from "../Types/CalendarTypes";
 
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
-type updateEvent = {
-    update: boolean,
-    index: number
-}
+
 
 const Create = () => {
     

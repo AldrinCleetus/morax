@@ -16,6 +16,11 @@ export type DayProps = {
     events?: event[]
 }
 
+export type updateEvent = {
+    update: boolean,
+    index: number
+}
+
 export type AddEventModalProps = {
     modalStatus: boolean
     newEvent: event
