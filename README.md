@@ -35,6 +35,9 @@ npm run build
 
 ## Project Screenshot(s)
 
+![alt text](https://github.com/AldrinCleetus/morax/blob/main/public/screenshots/screenshot1.png?raw=true)
+![alt text](https://github.com/AldrinCleetus/morax/blob/main/public/screenshots/screenshot2.png?raw=true)
+
 ## Author
 
 👤 **Aldrin**
